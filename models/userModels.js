@@ -23,17 +23,31 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     first_name: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      require: true
     },
     last_name: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      require: true
     },
     email: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      require: true
     },
+    pwsalt: {
+      allowNull:false,
+      type:DataTypes.STRING,
+      require: true
+    },
+    hash: {
+      allowNull:false,
+      type: DataTypes.STRING,
+      required: true
+  },
     created_at: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
     },
     updated_at: {
       allowNull: false,

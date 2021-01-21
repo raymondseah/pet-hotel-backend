@@ -17,17 +17,31 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       first_name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        require: true
       },
       last_name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        require: true
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        require: true
       },
+      pwsalt: {
+        allowNull:false,
+        type:Sequelize.STRING,
+        require: true
+      },
+      hash: {
+        allowNull:false,
+        type: Sequelize.STRING,
+        required: true
+    },
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW
       },
       updated_at: {
         allowNull: false,
