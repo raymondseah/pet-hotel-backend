@@ -2,19 +2,17 @@
 const {
   Model
 } = require('sequelize');
-const { underscoredIf } = require('sequelize/types/lib/utils');
+
+
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+  class userModels extends Model {
+
     static associate(models) {
-      // define association here
+      
+      
     }
   };
-  User.init({
+  userModels.init({
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -35,23 +33,24 @@ module.exports = (sequelize, DataTypes) => {
       require: true
     },
     pwsalt: {
-      allowNull:false,
-      type:DataTypes.STRING,
+      allowNull: false,
+      type: DataTypes.STRING,
       require: true
     },
     hash: {
-      allowNull:false,
+      allowNull: false,
       type: DataTypes.STRING,
       required: true
-  },
+    },
     created_at: {
       allowNull: false,
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
-    },
+    }, 
     updated_at: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
     }
   }, {
     sequelize,
@@ -59,5 +58,5 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'users',
     underscored: true
   });
-  return User;
+  return userModels;
 };
