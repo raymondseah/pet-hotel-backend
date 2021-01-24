@@ -15,9 +15,8 @@ app.use(express.urlencoded({
 //
 // =======================================
 const userControllers = require('./controllers/userControllers')
-const perControllers = require('./controllers/petControllers');
 const petControllers = require('./controllers/petControllers');
-
+const bookingControllers = require('./controllers/bookingControllers')
 
 // =======================================
 //
@@ -46,11 +45,23 @@ app.post('/api/v1/users/login', userControllers.login)
 // =======================================
 
 // pet creation
-app.post('/api/v1/pets/create', perControllers.createPet)
+app.post('/api/v1/pets/create', petControllers.createPet)
 // get pet by id
 app.get('/api/v1/pets/:pet_id',petControllers.getPetById)
 // delete pet by id
 app.delete('/api/v1/pets/:pet_id',petControllers.deletePetById)
+
+// =======================================
+//    ------BOOKING ROUTES
+// =======================================
+
+// pet creation
+app.post('/api/v1/bookings/create', bookingControllers.createBooking)
+// get pet by id
+app.get('/api/v1/bookings/:booking_id',bookingControllers.getBookingById)
+// delete pet by id
+app.delete('/api/v1/bookings/:booking_id',bookingControllers.deleteBookingById)
+
 
 // =======================================
 //

@@ -10,11 +10,9 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       user_id: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
       pet_id: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
       arrival_date: {
@@ -31,7 +29,6 @@ module.exports = {
         type: Sequelize.STRING
       },
       status: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       employee_notes: {

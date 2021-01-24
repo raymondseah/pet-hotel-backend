@@ -22,15 +22,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     user_id: {
-      allowNull: false,
-      autoIncrement: true,
-      unique: true,
       type: DataTypes.INTEGER
     },
     pet_id: {
-      allowNull: false,
-      autoIncrement: true,
-      unique: true,
       type: DataTypes.INTEGER
     },
     arrival_date: {
@@ -44,19 +38,15 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.NOW
     },
     client_notes: {
-      allowNull: false,
       type: DataTypes.STRING
     },
     status: {
-      allowNull: false,
       type: DataTypes.STRING
     },
     employee_notes: {
-      allowNull: false,
       type: DataTypes.STRING
     },
     fee: {
-      allowNull: false,
       type: DataTypes.INTEGER
     },
     created_at: {
