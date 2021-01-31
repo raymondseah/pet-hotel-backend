@@ -7,7 +7,6 @@ const petControllers = {
 
     createPet: (req, res) => {
 
-
         PetModel.create({
             client_id: req.body.client_id,
             pet_name: req.body.pet_name,
@@ -16,6 +15,7 @@ const petControllers = {
         })
             .then(result => {
                 if (result) {
+                    console.log(result)
                     res.statusCode = 201;
                     res.json({
                         success: true,

@@ -6,7 +6,7 @@ const {
 
 
 module.exports = (sequelize, DataTypes) => {
-    class petModels extends Model {
+    class petImageModels extends Model {
         /**
          * Helper method for defining associations.
          * This method is not a part of Sequelize lifecycle.
@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
             // this.HasMany(models.Users, { foreignKey: 'id', as: 'user_id' })
         }
     };
-    petModels.init({
+    petImageModels.init({
         id: {
             allowNull: false,
             autoIncrement: true,
@@ -24,26 +24,11 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        client_id:{
-            //changed to true first to test the postman before implementing this
-            allowNull: true,
-            type: DataTypes.INTEGER,
-            // references: {model:'user', key:'id'},
-        },
-        pet_name: {
-            allowNull: false,
+        name: {
             type: DataTypes.STRING,
-            require: true
         },
-        pet_type: {
-            allowNull: false,
-            type: DataTypes.STRING,
-            require: true
-        },
-        pet_breed: {
-            allowNull: false,
-            type: DataTypes.STRING,
-            require: true
+        data: {
+            type: DataTypes.BLOB("long"),
         },
         created_at: {
             allowNull: false,
@@ -57,9 +42,9 @@ module.exports = (sequelize, DataTypes) => {
           }
     }, {
         sequelize,
-        modelName: 'Pet',
-        tableName: 'pets',
+        modelName: 'PetImage',
+        tableName: 'petimages',
         underscored: true
     });
-    return petModels;
+    return petImageModels;
 };

@@ -1,14 +1,25 @@
 require('dotenv').config()
 const express = require('express')
 const app = express();
+const cors = require('cors')
 const port = process.env.PORT || 5000;
-
+const jwt = require('jsonwebtoken')
+// =======================================
+//
+//    ------DEFINE MIDDLEWARES
+//
+// =======================================
+const upload = require("./middleware/upload");
 
 app.use(express.urlencoded({
     extended: true
 }))
 
+app.use(cors({
+    origin: '*'
+}))
 
+app.options('*', cors())
 // =======================================
 //
 //    ------DEFINE CONTROLLERS
@@ -17,6 +28,8 @@ app.use(express.urlencoded({
 const userControllers = require('./controllers/userControllers')
 const petControllers = require('./controllers/petControllers');
 const bookingControllers = require('./controllers/bookingControllers')
+const petImageControllers = require('./controllers/petImageControllers')
+const usersProfileImageControllers  =require ('./controllers/useProfileImageControllers')
 
 // =======================================
 //
@@ -39,17 +52,39 @@ app.get('/api/v1', (req, res) => {
 app.post('/api/v1/users/register', userControllers.register)
 // user login route
 app.post('/api/v1/users/login', userControllers.login)
+// get user by id
+app.get('/api/v1/users/profile',verifyJWT,userControllers.getUserProfile)
+// upload image by user
+app.post('/api/v1/users/profile/upload',verifyJWT,usersProfileImageControllers.uploadUserProfileImage)
+// get uploaded profile image
+app.get('/api/v1/users/profileimage',verifyJWT,usersProfileImageControllers.getUserProfileImage)
+// 
+app.delete('/api/v1/users/profileimagedelete',verifyJWT,usersProfileImageControllers.deleteProfileImage)
 
 // =======================================
 //    ------PET ROUTES
 // =======================================
 
 // pet creation
-app.post('/api/v1/pets/create', petControllers.createPet)
+app.post('/api/v1/pets/create',petControllers.createPet)
 // get pet by id
 app.get('/api/v1/pets/:pet_id',petControllers.getPetById)
 // delete pet by id
 app.delete('/api/v1/pets/:pet_id',petControllers.deletePetById)
+
+// =======================================
+//    --PET PROFILE IMAGE ROUTES
+// =======================================
+
+// pet creation
+app.post('/api/v1/pets/upload', upload.single("file"), petImageControllers.uploadPetImage)
+
+// =======================================
+//    --USERS PROFILE IMAGE ROUTES
+// =======================================
+
+// user profile image creation
+// app.post('/api/v1/pets/upload', upload.single("file"), petImageControllers.uploadPetImage)
 
 // =======================================
 //    ------BOOKING ROUTES
