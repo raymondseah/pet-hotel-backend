@@ -12,10 +12,10 @@ const petControllers = {
             pet_name: req.body.pet_name,
             pet_type: req.body.pet_type,
             pet_breed: req.body.pet_breed,
+            email:req.body.email
         })
             .then(result => {
                 if (result) {
-                    console.log(result)
                     res.statusCode = 201;
                     res.json({
                         success: true,
@@ -45,14 +45,16 @@ const petControllers = {
 
     getPetById: (req, res) => {
 
+        console.log(req.params.id)
+
         return PetModel
-            .findByPk(req.params.pet_id)
+            .findByPk(req.params.id)
 
         // PetModel.findOne({
         //     id: req.params.pet_id,
         // })
             .then(response => {
-
+                console.log(response)
                 res.statusCode = 201;
                 res.json({
                     success: true,

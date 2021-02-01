@@ -68,7 +68,7 @@ app.delete('/api/v1/users/profileimagedelete',verifyJWT,usersProfileImageControl
 // pet creation
 app.post('/api/v1/pets/create',petControllers.createPet)
 // get pet by id
-app.get('/api/v1/pets/:pet_id',petControllers.getPetById)
+app.get('/api/v1/pets/:id',petControllers.getPetById)
 // delete pet by id
 app.delete('/api/v1/pets/:pet_id',petControllers.deletePetById)
 

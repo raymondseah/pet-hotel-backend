@@ -30,6 +30,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             // references: {model:'user', key:'id'},
         },
+        email:{
+            type: DataTypes.STRING,
+        },
         pet_name: {
             allowNull: false,
             type: DataTypes.STRING,

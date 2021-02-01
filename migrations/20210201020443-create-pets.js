@@ -13,6 +13,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         require: true
       },
+      email: {
+        type: Sequelize.STRING,
+      },
       pet_name: {
         type: Sequelize.STRING,
         require: true
