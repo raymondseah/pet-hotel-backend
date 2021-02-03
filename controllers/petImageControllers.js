@@ -1,36 +1,70 @@
 const fs = require("fs");
-const db = require("../models");
-const Image = db.images;
+const sequelize = require('./../models/index')
+const petProfileImageModel  =require('./../models/pet-image-models')
+const { emitWarning } = require("process");
+const { request } = require("http");
+const PetProfileSeq = petProfileImageModel(sequelize.sequelize, sequelize.Sequelize.DataTypes)
 
 const petImageControllers ={
 
-    uploadPetImage: (req,res) => {
-        try {
-            console.log(req.file);
-        
-            if (req.file == undefined) {
-              return res.send(`You must select a file.`);
-            }
-        
-            Image.create({
-              type: req.file.mimetype,
-              name: req.file.originalname,
-              data: fs.readFileSync(
-                __basedir + "/resources/static/assets/uploads/" + req.file.filename
-              ),
-            }).then((image) => {
-              fs.writeFileSync(
-                __basedir + "/resources/static/assets/tmp/" + image.name,
-                image.data
-              );
-        
-              return res.send(`File has been uploaded.`);
-            });
-          } catch (error) {
-            console.log(error);
-            return res.send(`Error when trying upload images: ${error}`);
-          }
-    }
+  uploadPetProfileImage: (req, res) => {
+
+    console.log(req.body)
+
+    PetProfileSeq.create({
+      user_id: req.body.user_id,
+      profile_pic_url: req.body.pet_profile_url,
+      email: req.body.email,
+      pet_id:req.body.pet_id
+    })
+      .then((response) => {
+        res.statueCode = 201;
+        res.json({
+          success: true,
+          message: "upload is successful",
+        });
+      })
+      .catch((err) => {
+        res.statueCode = 409;
+        res.json({
+          success: false,
+          message: "unable to upload due to unexpected error",
+        });
+      });
+  },
+
+  getPetProfileImageById: (req, res) => {
+    let id = req.params.id
+    PetProfileSeq.findOne({
+      where: {
+        pet_id: id
+      }
+    })
+      .then(userResults => {
+        if (userResults) { }
+        res.json(userResults)
+      })
+      .catch(err => {
+        res.json(err)
+      })
+
+  },
+
+  deletePetProfileImage: (req, res) => {
+    let id = req.params.id
+    PetProfileSeq.destroy({
+      where: {
+        pet_id: id
+      }
+    })
+    .then(userResults => {
+      if (userResults) { }
+      res.json(userResults)
+    })
+    .catch(err => {
+      res.json(err)
+    })
+  },
 }
 
 module.exports = petImageControllers

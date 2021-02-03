@@ -56,9 +56,9 @@ app.post('/api/v1/users/login', userControllers.login)
 app.get('/api/v1/users/profile',verifyJWT,userControllers.getUserProfile)
 // upload image by user
 app.post('/api/v1/users/profile/upload',verifyJWT,usersProfileImageControllers.uploadUserProfileImage)
-// get uploaded profile image
+// get uploaded user profile image
 app.get('/api/v1/users/profileimage',verifyJWT,usersProfileImageControllers.getUserProfileImage)
-// 
+// delete user profile image
 app.delete('/api/v1/users/profileimagedelete',verifyJWT,usersProfileImageControllers.deleteProfileImage)
 
 // =======================================
@@ -72,19 +72,14 @@ app.get('/api/v1/pets/:id',petControllers.getPetById)
 // delete pet by id
 app.delete('/api/v1/pets/:pet_id',petControllers.deletePetById)
 
-// =======================================
-//    --PET PROFILE IMAGE ROUTES
-// =======================================
+// upload image by pet
+app.post('/api/v1/pet/:id/profile/upload',petImageControllers.uploadPetProfileImage)
+// get uploaded pet profile image
+app.get('/api/v1/pet/:id/profileimage',petImageControllers.getPetProfileImageById)
+// delete user pet image
+app.delete('/api/v1/pet/:id/profile/delete',petImageControllers.deletePetProfileImage)
 
-// pet creation
-app.post('/api/v1/pets/upload', upload.single("file"), petImageControllers.uploadPetImage)
 
-// =======================================
-//    --USERS PROFILE IMAGE ROUTES
-// =======================================
-
-// user profile image creation
-// app.post('/api/v1/pets/upload', upload.single("file"), petImageControllers.uploadPetImage)
 
 // =======================================
 //    ------BOOKING ROUTES

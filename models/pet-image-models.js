@@ -24,11 +24,17 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        name: {
+        pet_id:{
             type: DataTypes.STRING,
         },
-        data: {
-            type: DataTypes.BLOB("long"),
+        user_id: {
+            type: DataTypes.STRING,
+        },
+        profile_pic_url: {
+            type: DataTypes.STRING,
+        },
+        email:{
+            type: DataTypes.STRING,
         },
         created_at: {
             allowNull: false,
