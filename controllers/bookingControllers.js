@@ -6,14 +6,16 @@ const BookingModel = Booking(sequelize.sequelize, sequelize.Sequelize.DataTypes)
 const BookingControllers = {
 
     createBooking: (req, res) => {
-
+        console.log(req.body)
 
         BookingModel.create({
-            arrival_date: req.body.client_id,
-            departure_date: req.body.pet_name,
-            client_notes: req.body.pet_type,
-            status: req.body.pet_breed,
-            employee_notes: req.body.employee_notes,
+            arrival_date: req.body.arrival_date,
+            departure_date: req.body.departure_date,
+            user_id:req.body.user_id,
+            client_notes: req.body.client_notes,
+            pet_id:req.body.pet_id,
+            email:req.body.user_email,
+            status: "awaiting comfimation",
             fee : req.body.fee,
 
 

@@ -9,6 +9,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      email:{
+        type: Sequelize.STRING,
+      },
       user_id: {
         type: Sequelize.INTEGER
       },
@@ -20,9 +23,19 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW
       },
+      arrival_time: {
+        allowNull: false,
+        type: Sequelize.TIME,
+        defaultValue: Sequelize.NOW
+      },
       departure_date: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW
+      },
+      departure_time: {
+        allowNull: false,
+        type: Sequelize.TIME,
         defaultValue: Sequelize.NOW
       },
       client_notes: {
