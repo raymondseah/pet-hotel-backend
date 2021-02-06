@@ -23,19 +23,9 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW
       },
-      arrival_time: {
-        allowNull: false,
-        type: Sequelize.TIME,
-        defaultValue: Sequelize.NOW
-      },
       departure_date: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW
-      },
-      departure_time: {
-        allowNull: false,
-        type: Sequelize.TIME,
         defaultValue: Sequelize.NOW
       },
       client_notes: {

@@ -35,19 +35,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
     },
-    arrival_time: {
-      allowNull: false,
-      type: DataTypes.TIME,
-      defaultValue: DataTypes.NOW
-    },
     departure_date: {
       allowNull: false,
       type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
-    },
-    departure_time: {
-      allowNull: false,
-      type: DataTypes.TIME,
       defaultValue: DataTypes.NOW
     },
     client_notes: {
