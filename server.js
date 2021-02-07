@@ -71,6 +71,8 @@ app.post('/api/v1/pets/create',petControllers.createPet)
 app.get('/api/v1/pets/:id',petControllers.getPetById)
 // delete pet by id
 app.delete('/api/v1/pets/:pet_id',petControllers.deletePetById)
+// get all pets created by user
+app.get('/api/vi/allpet',verifyJWT,petControllers.getAllPetsByUser)
 
 // upload image by pet
 app.post('/api/v1/pet/:id/profile/upload',petImageControllers.uploadPetProfileImage)

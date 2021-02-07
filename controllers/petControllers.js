@@ -12,7 +12,7 @@ const petControllers = {
             pet_name: req.body.pet_name,
             pet_type: req.body.pet_type,
             pet_breed: req.body.pet_breed,
-            email:req.body.email
+            email: req.body.email
         })
             .then(result => {
                 if (result) {
@@ -50,9 +50,9 @@ const petControllers = {
         return PetModel
             .findByPk(req.params.id)
 
-        // PetModel.findOne({
-        //     id: req.params.pet_id,
-        // })
+            // PetModel.findOne({
+            //     id: req.params.pet_id,
+            // })
             .then(response => {
                 console.log(response)
                 res.statusCode = 201;
@@ -74,6 +74,23 @@ const petControllers = {
             })
     },
 
+
+    getAllPetsByUser: (req, res) => {
+        return PetModel.findAll({
+            where: {
+                email: res.locals.jwtData.email
+            }
+        })
+            .then(userResults => {
+                res.json(userResults)
+            })
+            .catch(err => {
+                res.json(err)
+            })
+    },
+
+
+
     deletePetById: (req, res) => {
 
         return PetModel
@@ -81,10 +98,10 @@ const petControllers = {
             .then(result => {
                 if (!result) {
                     return res.status(400).send({
-                      message: 'result Not Found',
+                        message: 'result Not Found',
                     });
-                  }
-                  return result
+                }
+                return result
                     .destroy()
                     .then(() => res.status(204).send())
                     .catch((error) => res.status(400).send(error));
