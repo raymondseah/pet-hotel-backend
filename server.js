@@ -87,12 +87,15 @@ app.delete('/api/v1/pet/:id/profile/delete',petImageControllers.deletePetProfile
 //    ------BOOKING ROUTES
 // =======================================
 
-// pet creation
+// booking creation
 app.post('/api/v1/bookings/create', bookingControllers.createBooking)
-// get pet by id
-app.get('/api/v1/bookings/:booking_id',bookingControllers.getBookingById)
+// get booking by id
+app.get('/api/v1/bookings/:id',bookingControllers.getBookingById)
 // delete pet by id
 app.delete('/api/v1/bookings/:booking_id',bookingControllers.deleteBookingById)
+// get booking by user
+// get all pets created by user
+app.get('/api/vi/allbooking',verifyJWT,bookingControllers.getAllBookingByUser)
 
 
 // =======================================

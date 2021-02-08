@@ -18,15 +18,16 @@ module.exports = {
       pet_id: {
         type: Sequelize.INTEGER
       },
+      pet_name:{
+        type: Sequelize.STRING
+      },
       arrival_date: {
         allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW
+        type: Sequelize.STRING,
       },
       departure_date: {
         allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW
+        type: Sequelize.STRING,
       },
       client_notes: {
         type: Sequelize.STRING

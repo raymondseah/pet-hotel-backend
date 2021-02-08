@@ -30,15 +30,16 @@ module.exports = (sequelize, DataTypes) => {
     pet_id: {
       type: DataTypes.INTEGER
     },
+    pet_name:{
+      type: DataTypes.STRING
+    },
     arrival_date: {
       allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
+      type: DataTypes.STRING,
     },
     departure_date: {
       allowNull: false,
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
+      type: DataTypes.STRING,
     },
     client_notes: {
       type: DataTypes.STRING
