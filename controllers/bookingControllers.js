@@ -70,7 +70,7 @@ const BookingControllers = {
     getBookingById: (req, res) => {
 
         return BookingModel
-            .findByPk(req.params.booking_id)
+            .findByPk(req.params.id)
 
             // PetModel.findOne({
             //     id: req.params.pet_id,
@@ -91,7 +91,7 @@ const BookingControllers = {
                 res.json({
                     success: false,
                     err: err,
-                    message: "failed to get pet by id",
+                    message: "failed to get booking by id",
                 })
             })
     },
@@ -114,7 +114,7 @@ const BookingControllers = {
     deleteBookingById: (req, res) => {
 
         return BookingModel
-            .findByPk(req.params.booking_id)
+            .findByPk(req.params.id)
             .then(result => {
                 if (!result) {
                     return res.status(400).send({

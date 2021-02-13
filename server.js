@@ -92,7 +92,7 @@ app.post('/api/v1/bookings/create', bookingControllers.createBooking)
 // get booking by id
 app.get('/api/v1/bookings/:id',bookingControllers.getBookingById)
 // delete pet by id
-app.delete('/api/v1/bookings/:booking_id',bookingControllers.deleteBookingById)
+app.delete('/api/v1/bookings/:id',bookingControllers.deleteBookingById)
 // get booking by user
 // get all pets created by user
 app.get('/api/vi/allbooking',verifyJWT,bookingControllers.getAllBookingByUser)
