@@ -132,6 +132,40 @@ const BookingControllers = {
     },
 
 
+    adminGetAllBookings: (req,res) => {
+        BookingModel.findAll()
+        .then(results => {
+            console.log('Works')
+            res.json(results)
+        })
+        .catch(err => {
+            console.log('Does not work')
+            res.statusCode = 500
+            res.json(err)
+        })
+    },
+
+    bookingStatusUpdate: (req,res) => {
+        console.log(req.body)
+
+
+        BookingModel.update(
+            {
+                status:req.body.next_status
+            },
+            {
+                where:{id:req.params.id}
+            }
+        )
+        .then(response => {
+            console.log(response)
+        }) 
+        .catch(err => {
+            console.log(err)
+        })
+    }
+ 
+
 
 }
 

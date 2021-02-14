@@ -29,7 +29,9 @@ const userControllers = require('./controllers/userControllers')
 const petControllers = require('./controllers/petControllers');
 const bookingControllers = require('./controllers/bookingControllers')
 const petImageControllers = require('./controllers/petImageControllers')
-const usersProfileImageControllers  =require ('./controllers/useProfileImageControllers')
+const usersProfileImageControllers  =require ('./controllers/useProfileImageControllers');
+const bookingModels = require('./models/booking-models');
+const BookingControllers = require('./controllers/bookingControllers');
 
 // =======================================
 //
@@ -98,6 +100,11 @@ app.delete('/api/v1/bookings/:id',bookingControllers.deleteBookingById)
 app.get('/api/vi/allbooking',verifyJWT,bookingControllers.getAllBookingByUser)
 
 
+// =======================================
+//    ------ADMIN ROUTES
+// =======================================
+app.get('/api/v1/admin/getallbookings',bookingControllers.adminGetAllBookings)
+app.patch('/api/v1/bookings/:id/update',bookingControllers.bookingStatusUpdate)
 // =======================================
 //
 //    ----------LISTENER
