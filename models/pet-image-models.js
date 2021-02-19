@@ -13,7 +13,12 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            // this.HasMany(models.Users, { foreignKey: 'id', as: 'user_id' })
+            PetImage.belongsTo(models.Pet, {
+                foreignKeyConstraint: true
+                , onDelete: 'cascade'
+            })
+            
+
         }
     };
     petImageModels.init({
@@ -25,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER
         },
         pet_id:{
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
         },
         user_id: {
             type: DataTypes.STRING,

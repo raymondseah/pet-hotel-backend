@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            // this.HasMany(models.Users, { foreignKey: 'id', as: 'user_id' })
+            Pet.hasOne(models.PetImage)
         }
     };
     petModels.init({
@@ -24,13 +24,13 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        client_id:{
+        client_id: {
             //changed to true first to test the postman before implementing this
             allowNull: true,
             type: DataTypes.INTEGER,
             // references: {model:'user', key:'id'},
         },
-        email:{
+        email: {
             type: DataTypes.STRING,
         },
         pet_name: {
@@ -57,7 +57,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
-          }
+        }
     }, {
         sequelize,
         modelName: 'Pet',
