@@ -72,7 +72,7 @@ app.post('/api/v1/pets/create',petControllers.createPet)
 // get pet by id
 app.get('/api/v1/pets/:id',petControllers.getPetById)
 // delete pet by id
-app.delete('/api/v1/pets/:pet_id',petControllers.deletePetById)
+app.delete('/api/v1/pets/:id',petControllers.deletePetById)
 // get all pets created by user
 app.get('/api/vi/allpet',verifyJWT,petControllers.getAllPetsByUser)
 
@@ -105,6 +105,7 @@ app.get('/api/vi/allbooking',verifyJWT,bookingControllers.getAllBookingByUser)
 // =======================================
 app.get('/api/v1/admin/getallbookings',bookingControllers.adminGetAllBookings)
 app.patch('/api/v1/bookings/:id/update',bookingControllers.bookingStatusUpdate)
+app.patch('/api/v1/bookings/:id/notes/update',bookingControllers.bookingEmployeeNotesUpdate)
 // =======================================
 //
 //    ----------LISTENER

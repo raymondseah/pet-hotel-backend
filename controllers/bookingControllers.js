@@ -163,6 +163,22 @@ const BookingControllers = {
         .catch(err => {
             console.log(err)
         })
+    },
+
+    bookingEmployeeNotesUpdate: (req,res) => {
+        BookingModel.update({
+            employee_notes:req.body.employee_notes
+        },
+        {
+            where:{id:req.params.id}
+        })
+        
+        .then(response => {
+            console.log(response)
+        }) 
+        .catch(err => {
+            console.log(err)
+        })
     }
  
 

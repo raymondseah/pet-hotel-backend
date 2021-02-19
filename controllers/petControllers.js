@@ -94,7 +94,7 @@ const petControllers = {
     deletePetById: (req, res) => {
 
         return PetModel
-            .findByPk(req.params.pet_id)
+            .findByPk(req.params.id)
             .then(result => {
                 if (!result) {
                     return res.status(400).send({
