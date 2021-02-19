@@ -2,9 +2,8 @@
 const {
   Model
 } = require('sequelize');
-const { underscoredIf } = require('sequelize/types/lib/utils');
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class bookingModels extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -14,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-  User.init({
+  bookingModels.init({
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -22,28 +21,53 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    first_name: {
+    email:{
+      type: DataTypes.STRING,
+    },
+    user_id: {
+      type: DataTypes.INTEGER
+    },
+    pet_id: {
+      type: DataTypes.INTEGER
+    },
+    pet_name:{
       type: DataTypes.STRING
     },
-    last_name: {
+    arrival_date: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    departure_date: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    client_notes: {
       type: DataTypes.STRING
     },
-    email: {
+    status: {
       type: DataTypes.STRING
+    },
+    employee_notes: {
+      type: DataTypes.STRING
+    },
+    fee: {
+      type: DataTypes.INTEGER
     },
     created_at: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
     },
     updated_at: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
     }
   }, {
     sequelize,
-    modelName: 'User',
-    tableName: 'users',
+    modelName: 'Booking',
+    tableName: 'bookings',
     underscored: true
   });
-  return User;
+  return bookingModels;
 };
