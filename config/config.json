@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "pet_hotel",
-    "host": "127.0.0.1",
+    "username": "bea595ccda0836",
+    "password": "da3ec224",
+    "database": "heroku_79d3918ea61a638",
+    "host": "us-cdbr-east-03.cleardb.com",
     "dialect": "mysql"
   }
 }
